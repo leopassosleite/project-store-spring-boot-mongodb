@@ -38,10 +38,16 @@ public class Instatiation implements CommandLineRunner{
 		
 		userRepository.saveAll(Arrays.asList(leonardo, tailine, alice));
 		
-		Post post1 = new Post(null, sdf.parse("10/12/2021"), "Produto excelente", "Produto de muita qualidade, recomendo!", new AuthorDTO(leonardo));
-		Post post2 = new Post(null, sdf.parse("14/12/2021"), "Pruduto ruim", "Produdo abaixo de minhas expectativas, não recomendo!", new AuthorDTO (tailine));
+		Post post1 = new Post(null, sdf.parse("10/12/2021"), "Produto excelente", "Produto de muita qualidade, recomendo!", new AuthorDTO(tailine));
+		Post post2 = new Post(null, sdf.parse("14/12/2021"), "Pruduto ruim", "Produdo abaixo de minhas expectativas, não recomendo!", new AuthorDTO (alice));
 		
 		postRepository.saveAll(Arrays.asList(post1, post2));
+		
+		tailine.getPosts().addAll(Arrays.asList(post1));
+		userRepository.save(tailine);
+		
+		alice.getPosts().addAll(Arrays.asList(post2));
+		userRepository.save(alice);
 	}
 
 }
