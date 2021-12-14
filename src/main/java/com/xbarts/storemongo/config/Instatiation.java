@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.xbarts.storemongo.domain.Post;
 import com.xbarts.storemongo.domain.User;
+import com.xbarts.storemongo.dto.AuthorDTO;
 import com.xbarts.storemongo.repository.PostRepository;
 import com.xbarts.storemongo.repository.UserRepository;
 
@@ -35,10 +36,11 @@ public class Instatiation implements CommandLineRunner{
 		User tailine = new User(null, "Tailine", "tailine.prates@gmail.com");
 		User alice = new User(null, "Alice", "alice.coutinho@gmail.com");
 		
-		Post post1 = new Post(null, sdf.parse("10/12/2021"), "Produto excelente", "Produto de muita qualidade, recomendo!", leonardo);
-		Post post2 = new Post(null, sdf.parse("14/12/2021"), "Pruduto ruim", "Produdo abaixo de minhas expectativas, não recomendo!", tailine);
-		
 		userRepository.saveAll(Arrays.asList(leonardo, tailine, alice));
+		
+		Post post1 = new Post(null, sdf.parse("10/12/2021"), "Produto excelente", "Produto de muita qualidade, recomendo!", new AuthorDTO(leonardo));
+		Post post2 = new Post(null, sdf.parse("14/12/2021"), "Pruduto ruim", "Produdo abaixo de minhas expectativas, não recomendo!", new AuthorDTO (tailine));
+		
 		postRepository.saveAll(Arrays.asList(post1, post2));
 	}
 
