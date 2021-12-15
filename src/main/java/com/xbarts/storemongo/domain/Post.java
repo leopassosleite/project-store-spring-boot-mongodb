@@ -13,26 +13,26 @@ import com.xbarts.storemongo.dto.AuthorDTO;
 import com.xbarts.storemongo.dto.CommentDTO;
 
 @Document
-public class Post implements Serializable{
+public class Post implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String id;
 	private Date date;
-	private String tile;
+	private String title;
 	private String body;
 	private AuthorDTO author;
-	
+
 	private List<CommentDTO> comments = new ArrayList<>();
-	
+
 	public Post() {
 	}
 
-	public Post(String id, Date date, String tile, String body, AuthorDTO author) {
+	public Post(String id, Date date, String title, String body, AuthorDTO author) {
 		super();
 		this.id = id;
 		this.date = date;
-		this.tile = tile;
+		this.title = title;
 		this.body = body;
 		this.author = author;
 	}
@@ -53,12 +53,12 @@ public class Post implements Serializable{
 		this.date = date;
 	}
 
-	public String getTile() {
-		return tile;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTile(String tile) {
-		this.tile = tile;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getBody() {
@@ -68,7 +68,7 @@ public class Post implements Serializable{
 	public void setBody(String body) {
 		this.body = body;
 	}
-	
+
 	public AuthorDTO getAuthor() {
 		return author;
 	}
@@ -76,7 +76,7 @@ public class Post implements Serializable{
 	public void setAuthor(AuthorDTO author) {
 		this.author = author;
 	}
-	
+
 	public List<CommentDTO> getComments() {
 		return comments;
 	}
